@@ -13,7 +13,7 @@ class Tenma:
         time.sleep(0.1)
 
     def __receiveOutput(self):
-        return self.ser.read(self.ser.in_waiting).decode('ascii')
+        return self.ser.read(self.ser.in_waiting).decode('ascii').strip('\x00')
 
     def getVersion(self):
         self.__sendCommand("*IDN?")
