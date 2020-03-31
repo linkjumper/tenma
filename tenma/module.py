@@ -12,7 +12,7 @@ class Tenma:
 
     def __sendCommand(self, command):
         self.ser.write(command.encode('ascii'))
-        time.sleep(0.05)
+        time.sleep(0.1)
 
     def __receiveOutput(self):
         return self.ser.read(self.ser.in_waiting).decode('ascii')
