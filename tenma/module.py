@@ -2,13 +2,11 @@ import serial
 import time
 
 class Tenma:
-    def __init__(self, _port, _voltage, _current):
+    def __init__(self, _port):
         self.ser = serial.Serial(port=_port,
                                  baudrate=9600,
                                  parity=serial.PARITY_NONE,
                                  stopbits=serial.STOPBITS_ONE)
-        self.setVoltage(_voltage)
-        self.setCurrent(_current)
 
     def __sendCommand(self, command):
         self.ser.write(command.encode('ascii'))

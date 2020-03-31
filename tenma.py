@@ -15,7 +15,9 @@ signal.signal(signal.SIGINT, signal_handler)
 
 def main():
     args = vars(parser.parse_args())
-    power_supply = tenma.Tenma(args['device'], args['voltage'], args['current'])
+    power_supply = tenma.Tenma(args['device'])
+    power_supply.setVoltage(args['voltage'])
+    power_supply.setCurrent(args['current'])
     power_supply.printInfo()
     power_supply.start()
     print('Press Ctrl+C to stop')
