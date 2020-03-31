@@ -8,6 +8,9 @@ class Tenma:
                                  parity=serial.PARITY_NONE,
                                  stopbits=serial.STOPBITS_ONE)
 
+    def __del__(self):
+        self.stop()
+
     def __sendCommand(self, command):
         self.ser.write(command.encode('ascii'))
         time.sleep(0.1)

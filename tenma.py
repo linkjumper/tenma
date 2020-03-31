@@ -12,6 +12,8 @@ parser.add_argument('-d', '--device', default='/dev/ttyACM0', help='set device')
 
 def signal_handler(sig, frame):
     print('Terminate Tenma control')
+    sys.exit()
+
 signal.signal(signal.SIGINT, signal_handler)
 
 def confirmSetup(voltage_new, voltage_old, current_new, current_old):
@@ -31,7 +33,6 @@ def main():
     power_supply.start()
     print('Press Ctrl+C to stop')
     signal.pause()
-    power_supply.stop()
 
 if __name__ == "__main__":
     main()
