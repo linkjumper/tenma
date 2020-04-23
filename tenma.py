@@ -24,15 +24,18 @@ def confirmSetup(voltage_new, voltage_old, current_new, current_old):
 
 def main():
     args = vars(parser.parse_args())
-    power_supply = tenma.Tenma(args['device'])
-    confirmSetup(args['voltage'], power_supply.getVoltage(),
-                 args['current'], power_supply.getCurrent())
-    power_supply.setVoltage(args['voltage'])
-    power_supply.setCurrent(args['current'])
-    power_supply.printInfo()
-    power_supply.start()
-    print('Press Ctrl+C to stop')
-    signal.pause()
+    try:
+        power_supply = tenma.Tenma(args['device'])
+        confirmSetup(args['voltage'], power_supply.getVoltage(),
+                     args['current'], power_supply.getCurrent())
+        power_supply.setVoltage(args['voltage'])
+        power_supply.setCurrent(args['current'])
+        power_supply.printInfo()
+        power_supply.start()
+        print('Press Ctrl+C to stop')
+        signal.pause()
+    except Exception as e:
+        print(repr(e))
 
 if __name__ == "__main__":
     main()
