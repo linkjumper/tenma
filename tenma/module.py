@@ -40,7 +40,8 @@ class Tenma:
         self.__sendCommand(f'OUT1')
 
     def stop(self):
-        self.__sendCommand(f'OUT0')
+        if hasattr(self, 'ser'):
+            self.__sendCommand(f'OUT0')
 
     def printInfo(self):
         print(f'Version: {self.getVersion()}')
